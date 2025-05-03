@@ -1,7 +1,5 @@
 # Cloudflare Steam App
 
-## Setup
-
 ### One Click Deploy
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/RealTong/cloudflare-steam-app)
 
@@ -20,6 +18,6 @@ npx wrangler secret put BOT_TOKEN # Bot Token
 
 4. `pnpm run deploy`
 
-## Usage
+### Usage
 
 - `https://t.me/@YOUR_BOT_NAME?start`
