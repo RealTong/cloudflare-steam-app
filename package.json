@@ -1,0 +1,29 @@
+{
+  "name": "cloudflare-steam-app",
+  "description": "Cloudflare Worker for Steam App",
+  "cloudflare": {
+    "label": "Worker",
+    "products": [
+      "Workers"
+    ],
+    "categories": [
+      "serverless"
+    ]
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "typescript": "5.7.2",
+    "wrangler": "3.107.3"
+  },
+  "scripts": {
+    "check": "tsc && wrangler --experimental-json-config deploy --dry-run",
+    "deploy": "wrangler --experimental-json-config deploy",
+    "dev": "wrangler --experimental-json-config dev",
+    "types": "wrangler --experimental-json-config types",
+    "start": "ts-node src/main.ts"
+  },
+  "dependencies": {
+    "grammy": "^1.35.1",
+    "ts-node": "^10.9.2"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "compatibility_date": "2025-04-09",
+  "main": "src/index.ts",
+  "name": "cloudflare-steam-app",
+  "observability": {
+    "enabled": true
+  }
+}
