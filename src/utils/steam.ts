@@ -44,7 +44,6 @@ class SteamClient {
     const data = await response.json() as SteamOwnedGamesResponse;
     const games = data.response.games || [];
     
-    // Sort by playtime (minutes)
     return games
       .sort((a: SteamOwnedGame, b: SteamOwnedGame) => b.playtime_forever - a.playtime_forever)
       .slice(0, limit)

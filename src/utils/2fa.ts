@@ -16,14 +16,6 @@ async function generateHmac(
   return await crypto.subtle.sign("HMAC", key, buffer);
 }
 
-function arrayBufferToBase64(buffer: Uint8Array): string {
-  let binary = "";
-  for (let i = 0; i < buffer.byteLength; i++) {
-    binary += String.fromCharCode(buffer[i]);
-  }
-  return btoa(binary);
-}
-
 function hexToArrayBuffer(hex: string): ArrayBuffer {
   const typedArray = new Uint8Array(hex.length / 2);
   for (let i = 0; i < typedArray.length; i++) {
@@ -77,7 +69,7 @@ function bufferizeSecret(secret: ArrayBuffer | string): ArrayBuffer {
   if (secret instanceof ArrayBuffer) return secret;
   if (ArrayBuffer.isView(secret)) {
     const s = secret as ArrayBufferView;
-    return s.buffer;
+    return s.buffer as ArrayBuffer;
   }
   throw new Error("Invalid secret type");
 }

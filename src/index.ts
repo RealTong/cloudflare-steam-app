@@ -1,4 +1,4 @@
-import { Bot, Context, session, webhookCallback } from "grammy";
+import { Bot, Context, webhookCallback } from "grammy";
 import SteamClient from "./utils/steam";
 
 interface SessionData {}
@@ -12,11 +12,10 @@ interface MyContext extends Context {
 }
 
 async function middleware(ctx: MyContext, next: () => Promise<void>) {
-  // 将环境变量中的字符串 USER_ID 转换为数字
   const developerId = ctx.config.botDeveloper;
   const userId = ctx.from?.id;
 
-  console.log(`用户 ID: ${userId} 正在使用 Bot`);
+  console.log(`TG 用户 ID: ${userId} 正在使用 Bot`);
 
   if (userId === developerId) {
     await next();
@@ -28,13 +27,8 @@ async function middleware(ctx: MyContext, next: () => Promise<void>) {
 
 export default {
   async fetch(request, env: Env, _ctx: ExecutionContext): Promise<Response> {
-    // 创建 bot 实例，指定类型为 MyContext
     const bot = new Bot<MyContext>(env.BOT_TOKEN);
 
-    // 初始化会话中间件
-    bot.use(session({ initial: () => ({}) }));
-
-    // 添加配置到上下文
     bot.use(async (ctx, next) => {
       ctx.config = {
         botDeveloper: Number(env.USER_ID),
@@ -45,7 +39,7 @@ export default {
     bot.use(middleware);
     bot.command("start", async (ctx) => {
       await ctx.reply(
-        "Hello, Welcome to use Cloudflare Steam App. Build by RealTong.💛"
+        "Hello, Welcome to use Cloudflare Steam App. Build with 💛"
       );
     });
     const steamClient = new SteamClient(
@@ -76,10 +70,7 @@ export default {
       const limit = ctx.match ? Number(ctx.match[1]) : 5;
       const myGames = await steamClient.getMyGames(limit);
 
-      // Header for the games list
       let message = `*🎮 My Top ${myGames.length} Games*\n\n`;
-
-      // Add each game with proper formatting
       message += myGames
         .map(
           (game, index) =>

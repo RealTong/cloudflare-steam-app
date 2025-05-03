@@ -25,10 +25,8 @@ function formatMinutesToFriendlyString(minutes: number): string {
 function formatTimestampToDateTime(timestamp: number, timezone: string = "Asia/Shanghai"): string {
   if (timestamp === 0) return "未知时间";
 
-  // 转换为毫秒时间戳
   const date = new Date(timestamp * 1000);
   
-  // 使用 Intl.DateTimeFormat 进行时区转换
   const formatter = new Intl.DateTimeFormat('zh-CN', {
     year: 'numeric',
     month: '2-digit',
