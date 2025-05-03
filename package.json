@@ -19,8 +19,7 @@
     "check": "tsc && wrangler --experimental-json-config deploy --dry-run",
     "deploy": "wrangler --experimental-json-config deploy",
     "dev": "wrangler --experimental-json-config dev",
-    "types": "wrangler --experimental-json-config types",
-    "start": "ts-node src/main.ts"
+    "types": "wrangler --experimental-json-config types"
   },
   "dependencies": {
     "grammy": "^1.35.1",

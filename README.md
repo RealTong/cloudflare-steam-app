@@ -21,3 +21,7 @@ npx wrangler secret put BOT_TOKEN # Bot Token
 ### Usage
 
 - `https://t.me/@YOUR_BOT_NAME?start`
+
+### Screenshot
+
+![Screenshot](https://raw.githubusercontent.com/RealTong/cloudflare-steam-app/main/demo.jpeg)
